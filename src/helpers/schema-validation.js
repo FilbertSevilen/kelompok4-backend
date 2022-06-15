@@ -7,6 +7,6 @@ module.exports.adminSendForgetSchema = Joi.object({
     email : Joi.string().email().required()
 })
 module.exports.adminResetPasswordSchema = Joi.object({
-    email : Joi.string().email().required(),
+    id : Joi.string().required(),
     password : Joi.string().min(4).required()
 })

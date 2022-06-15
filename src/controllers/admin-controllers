@@ -50,7 +50,7 @@ module.exports.login = async(req,res) => {
 
 module.exports.sendForgetEmail = async(req,res) =>{
     const body = req.body
-    
+    console.log(body)
     try{
         const {error} = adminSendForgetSchema.validate(body)
         if(error){
@@ -104,8 +104,8 @@ module.exports.resetPassword = async(req,res) =>{
         const salt = await bcrypt.genSalt(10)
         const hashpassword = await bcrypt.hash(body.password, salt)
 
-        const CHANGE_PASSWORD = `UPDATE admins SET password = ? WHERE email = ?`
-        const [INFO] = await database.execute(CHANGE_PASSWORD, [hashpassword, body.email])
+        const CHANGE_PASSWORD = `UPDATE admins SET password = ? WHERE id = ?`
+        const [INFO] = await database.execute(CHANGE_PASSWORD, [hashpassword, body.id])
 
         res.status(200).send('Change Password Success')
     }
