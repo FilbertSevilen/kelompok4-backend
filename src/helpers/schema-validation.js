@@ -10,3 +10,4 @@ module.exports.adminResetPasswordSchema = Joi.object({
     id : Joi.string().required(),
     password : Joi.string().min(4).required()
 })
+//test
